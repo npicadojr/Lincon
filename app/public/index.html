@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lincoln Academy | Excelencia Académica Trilingüe</title>
+<meta name="description" content="Lincoln Academy — Más de 30 años formando ciudadanos globales con educación trilingüe en El Cangrejo, Panamá."/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "background-alt": "#F8FAFC",
+          "primary-container": "#005387",
+          "error-container": "#ffdad6",
+          "on-tertiary-fixed": "#001d35",
+          "on-secondary": "#ffffff",
+          "whatsapp-green": "#25D366",
+          "outline": "#717880",
+          "on-surface": "#181c23",
+          "on-surface-variant": "#41474f",
+          "on-error-container": "#93000a",
+          "surface-container-highest": "#dfe2ed",
+          "tertiary-container": "#00528a",
+          "surface-dim": "#d7dae5",
+          "secondary": "#835500",
+          "on-primary-container": "#91c7ff",
+          "primary-fixed": "#cfe4ff",
+          "on-tertiary-container": "#93c5ff",
+          "secondary-container": "#fdb241",
+          "on-secondary-container": "#6e4600",
+          "on-primary": "#ffffff",
+          "secondary-fixed": "#ffddb4",
+          "inverse-on-surface": "#edf0fc",
+          "surface-container": "#ebedf9",
+          "tertiary": "#003b65",
+          "on-error": "#ffffff",
+          "surface-container-low": "#f0f3fe",
+          "on-background": "#181c23",
+          "inverse-surface": "#2c3039",
+          "outline-variant": "#c1c7d1",
+          "on-primary-fixed-variant": "#004a79",
+          "primary-fixed-dim": "#9acbff",
+          "tertiary-fixed": "#d1e4ff",
+          "background": "#f9f9ff",
+          "on-secondary-fixed": "#291800",
+          "secondary-fixed-dim": "#ffb954",
+          "surface-border": "#E2E8F0",
+          "error": "#ba1a1a",
+          "on-secondary-fixed-variant": "#633f00",
+          "surface-container-lowest": "#ffffff",
+          "surface-variant": "#dfe2ed",
+          "surface-tint": "#1f6297",
+          "on-tertiary-fixed-variant": "#00497c",
+          "primary": "#003b63",
+          "surface-bright": "#f9f9ff",
+          "on-tertiary": "#ffffff",
+          "on-primary-fixed": "#001d34",
+          "tertiary-fixed-dim": "#9dcaff",
+          "surface-container-high": "#e5e8f3",
+          "inverse-primary": "#9acbff",
+          "surface": "#f9f9ff"
+        },
+        borderRadius: {
+          DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"
+        },
+        spacing: {
+          "container-max-width": "1200px",
+          "gutter": "24px",
+          "margin-mobile": "16px",
+          "margin-desktop": "64px",
+          "unit": "8px"
+        },
+        fontFamily: {
+          "headline-xl": ["Source Serif 4"],
+          "headline-lg": ["Source Serif 4"],
+          "headline-lg-mobile": ["Source Serif 4"],
+          "headline-md": ["Source Serif 4"],
+          "label-md": ["Manrope"],
+          "label-sm": ["Manrope"],
+          "body-md": ["Manrope"],
+          "body-lg": ["Manrope"]
+        },
+        fontSize: {
+          "headline-xl": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+          "headline-lg-mobile": ["28px", { lineHeight: "36px", fontWeight: "600" }],
+          "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+          "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600" }],
+          "label-sm": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+          "headline-lg": ["36px", { lineHeight: "44px", fontWeight: "600" }],
+          "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+          "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  .hero-gradient {
+    background: linear-gradient(0deg, rgba(0,59,99,0.85) 0%, rgba(0,59,99,0.3) 50%, rgba(0,59,99,0) 100%);
+  }
+  .glass-card {
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(226,232,240,0.8);
+  }
+  @keyframes slowZoom {
+    0%   { transform: scale(1); }
+    100% { transform: scale(1.08); }
+  }
+  .hero-img { animation: slowZoom 18s ease-in-out infinite alternate; }
+
+  /* Toast notification */
+  #toast {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  #toast.hidden { opacity: 0; transform: translateY(16px); pointer-events: none; }
+  #toast.show   { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+
+<!-- ── HEADER ── -->
+<header id="header" class="bg-surface/95 backdrop-blur-sm sticky top-0 z-50 transition-all duration-300 border-b border-surface-border">
+  <nav class="flex justify-between items-center w-full px-6 md:px-margin-desktop py-4 max-w-[1200px] mx-auto">
+    <a href="/" class="flex items-center gap-3">
+      <img src="/assets/logo.png" alt="The Lincoln Academy" class="h-10 w-auto object-contain"/>
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="hidden md:flex items-center gap-10">
+      <a href="#inicio"       class="font-label-md text-label-md text-primary font-bold border-b-2 border-primary">Inicio</a>
+      <a href="#nosotros"     class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200">Nosotros</a>
+      <a href="#actividades"  class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200">Actividades</a>
+      <a href="#admisiones"   class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200">Contacto</a>
+      <a href="#admisiones"   class="bg-secondary text-on-secondary px-6 py-3 rounded-lg font-label-md text-label-md hover:brightness-110 hover:scale-105 active:opacity-80 transition-all shadow-sm">
+        Inscripciones
+      </a>
+    </div>
+
+    <!-- Mobile menu toggle -->
+    <button id="menuBtn" class="md:hidden p-2 text-primary" aria-label="Menú">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="hidden md:hidden bg-surface border-t border-surface-border px-6 pb-6 space-y-4">
+    <a href="#inicio"      class="block font-label-md text-label-md text-primary py-2">Inicio</a>
+    <a href="#nosotros"    class="block font-label-md text-label-md text-on-surface-variant py-2">Nosotros</a>
+    <a href="#actividades" class="block font-label-md text-label-md text-on-surface-variant py-2">Actividades</a>
+    <a href="#admisiones"  class="block font-label-md text-label-md text-on-surface-variant py-2">Contacto</a>
+    <a href="#admisiones"  class="inline-block bg-secondary text-on-secondary px-6 py-3 rounded-lg font-label-md text-label-md">Inscripciones</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ── HERO ── -->
+  <section id="inicio" class="relative h-[88vh] min-h-[600px] w-full flex items-end overflow-hidden">
+    <img
+      src="/assets/hero.jpg"
+      alt="Estudiantes de Lincoln Academy en clase"
+      class="hero-img absolute inset-0 w-full h-full object-cover object-top"
+    />
+    <div class="absolute inset-0 hero-gradient"></div>
+    <div class="relative w-full max-w-[1200px] mx-auto px-6 md:px-margin-desktop pb-20 md:pb-28 text-white">
+      <div class="max-w-2xl">
+        <span class="font-label-md text-label-md uppercase tracking-widest text-secondary-container block mb-4">El Cangrejo, Panamá · Est. 1994</span>
+        <h1 class="font-headline-xl text-4xl md:text-headline-xl mb-6 leading-tight">
+          Excelencia Académica y<br/>Formación Trilingüe
+        </h1>
+        <p class="font-body-lg text-body-lg text-primary-fixed mb-8 opacity-90 max-w-xl">
+          Forjando ciudadanos globales con una educación integral en el corazón de El Cangrejo.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#admisiones" class="bg-secondary text-on-secondary px-8 py-4 rounded-lg font-label-md text-label-md hover:-translate-y-0.5 transition-transform shadow-lg">
+            Inscripciones Abiertas
+          </a>
+          <a href="#nosotros" class="bg-white/10 backdrop-blur-md border border-white/25 text-white px-8 py-4 rounded-lg font-label-md text-label-md hover:bg-white/20 transition-all">
+            Conócenos
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURE CARDS ── -->
+  <section class="bg-surface py-20">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-margin-desktop">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <div class="group bg-surface-container-lowest p-10 rounded-xl shadow-[0px_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-primary text-3xl">language</span>
+          </div>
+          <h3 class="font-headline-md text-headline-md mb-4 text-primary">Curriculum Trilingüe</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant">Educación de vanguardia con el inglés como primera lengua, integrando tres idiomas para una competitividad global real.</p>
+        </div>
+
+        <div class="group bg-surface-container-lowest p-10 rounded-xl shadow-[0px_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-primary text-3xl">groups</span>
+          </div>
+          <h3 class="font-headline-md text-headline-md mb-4 text-primary">Grupos Pequeños</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant">Atención personalizada y educación individualizada para potenciar las fortalezas únicas de cada estudiante en un ambiente seguro.</p>
+        </div>
+
+        <div class="group bg-surface-container-lowest p-10 rounded-xl shadow-[0px_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-primary text-3xl">psychology</span>
+          </div>
+          <h3 class="font-headline-md text-headline-md mb-4 text-primary">Estudios Dirigidos</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant">Acompañamiento académico integral dentro del horario escolar, fortaleciendo hábitos de estudio y excelencia desde temprana edad.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ¿QUÉ NOS DIFERENCIA? ── -->
+  <section id="nosotros" class="bg-background-alt py-24 overflow-hidden">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-margin-desktop">
+      <div class="flex flex-col lg:flex-row gap-16 items-center">
+
+        <div class="lg:w-1/2">
+          <span class="font-label-md text-label-md text-secondary uppercase tracking-widest mb-4 block">Identidad Educativa</span>
+          <h2 class="font-headline-lg text-headline-lg mb-8 text-primary">¿Qué nos diferencia?</h2>
+          <p class="font-body-lg text-body-lg text-on-surface-variant mb-10 leading-relaxed">
+            En Lincoln Academy vamos más allá de lo estándar. Nos esforzamos por encontrar las mejores condiciones
+            para cada alumno, enfocándonos en la innovación y la calidad humana de nuestro cuerpo docente.
+          </p>
+          <div class="space-y-6">
+            <div class="flex gap-4 items-start">
+              <span class="material-symbols-outlined text-secondary shrink-0 mt-0.5">check_circle</span>
+              <p class="font-body-md text-body-md text-on-surface">Instrucción en <strong>inglés como primera lengua</strong> con maestros altamente calificados.</p>
+            </div>
+            <div class="flex gap-4 items-start">
+              <span class="material-symbols-outlined text-secondary shrink-0 mt-0.5">check_circle</span>
+              <p class="font-body-md text-body-md text-on-surface">Comunidad verdaderamente internacional, fundada sobre valores de inclusión global y diversidad cultural.</p>
+            </div>
+            <div class="flex gap-4 items-start">
+              <span class="material-symbols-outlined text-secondary shrink-0 mt-0.5">check_circle</span>
+              <p class="font-body-md text-body-md text-on-surface">Certificación <strong>Neo+</strong> para la adquisición natural del inglés de forma visual, auditiva y verbal.</p>
+            </div>
+            <div class="flex gap-4 items-start">
+              <span class="material-symbols-outlined text-secondary shrink-0 mt-0.5">check_circle</span>
+              <p class="font-body-md text-body-md text-on-surface">Diseñado específicamente para familias que buscan excelencia académica integral y valores éticos.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:w-1/2 relative">
+          <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
+            <img src="/assets/hero.jpg" alt="Estudiantes de Lincoln Academy" class="w-full h-[480px] object-cover object-top"/>
+          </div>
+          <div class="absolute -bottom-8 -right-8 w-64 h-64 bg-secondary-container/20 rounded-full blur-3xl -z-0"></div>
+          <div class="absolute -top-8 -left-8 w-48 h-48 bg-primary/10 rounded-full blur-2xl -z-0"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ESTADÍSTICAS ── -->
+  <section class="bg-primary py-16">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-margin-desktop">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+        <div>
+          <p class="font-headline-xl text-4xl md:text-5xl font-bold text-secondary-container">30+</p>
+          <p class="font-body-md text-body-md text-primary-fixed mt-2 opacity-90">Años de trayectoria</p>
+        </div>
+        <div>
+          <p class="font-headline-xl text-4xl md:text-5xl font-bold text-secondary-container">3</p>
+          <p class="font-body-md text-body-md text-primary-fixed mt-2 opacity-90">Idiomas de instrucción</p>
+        </div>
+        <div>
+          <p class="font-headline-xl text-4xl md:text-5xl font-bold text-secondary-container">10+</p>
+          <p class="font-body-md text-body-md text-primary-fixed mt-2 opacity-90">Actividades extracurriculares</p>
+        </div>
+        <div>
+          <p class="font-headline-xl text-4xl md:text-5xl font-bold text-secondary-container">100%</p>
+          <p class="font-body-md text-body-md text-primary-fixed mt-2 opacity-90">Enfoque personalizado</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EXTRACURRICULARES ── -->
+  <section id="actividades" class="py-24 bg-surface">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-margin-desktop text-center mb-16">
+      <span class="font-label-md text-label-md text-secondary uppercase tracking-widest block mb-3">Vida escolar completa</span>
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Experiencia Extracurricular</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+        Desarrollando talentos a través de un programa diverso de arte, deporte, tecnología y más.
+      </p>
+    </div>
+    <div class="max-w-[1200px] mx-auto px-6 md:px-margin-desktop">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+        <div class="group relative h-52 rounded-xl overflow-hidden cursor-pointer bg-primary-container">
+          <div class="absolute inset-0 bg-primary/50 group-hover:bg-primary/30 transition-all z-10"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-20">
+            <span class="material-symbols-outlined text-white text-[120px]">precision_manufacturing</span>
+          </div>
+          <div class="absolute bottom-4 left-4 z-20 text-white">
+            <span class="material-symbols-outlined block mb-1 text-secondary-container">precision_manufacturing</span>
+            <span class="font-label-md text-label-md">Robótica</span>
+          </div>
+        </div>
+
+        <div class="group relative h-52 rounded-xl overflow-hidden cursor-pointer bg-secondary">
+          <div class="absolute inset-0 bg-secondary/50 group-hover:bg-secondary/30 transition-all z-10"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-20">
+            <span class="material-symbols-outlined text-white text-[120px]">sports_basketball</span>
+          </div>
+          <div class="absolute bottom-4 left-4 z-20 text-white">
+            <span class="material-symbols-outlined block mb-1">sports_basketball</span>
+            <span class="font-label-md text-label-md">Deportes</span>
+          </div>
+        </div>
+
+        <div class="group relative h-52 rounded-xl overflow-hidden cursor-pointer bg-tertiary-container">
+          <div class="absolute inset-0 bg-tertiary/50 group-hover:bg-tertiary/30 transition-all z-10"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-20">
+            <span class="material-symbols-outlined text-white text-[120px]">palette</span>
+          </div>
+          <div class="absolute bottom-4 left-4 z-20 text-white">
+            <span class="material-symbols-outlined block mb-1">palette</span>
+            <span class="font-label-md text-label-md">Arte y Pintura</span>
+          </div>
+        </div>
+
+        <div class="group relative h-52 rounded-xl overflow-hidden cursor-pointer bg-surface-container-highest">
+          <div class="absolute inset-0 bg-on-surface/40 group-hover:bg-on-surface/20 transition-all z-10"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-20">
+            <span class="material-symbols-outlined text-white text-[120px]">pool</span>
+          </div>
+          <div class="absolute bottom-4 left-4 z-20 text-white">
+            <span class="material-symbols-outlined block mb-1">pool</span>
+            <span class="font-label-md text-label-md">Natación</span>
+          </div>
+        </div>
+
+        <div class="group relative h-52 rounded-xl overflow-hidden cursor-pointer bg-primary-container">
+          <div class="absolute inset-0 bg-primary/50 group-hover:bg-primary/30 transition-all z-10"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-20">
+            <span class="material-symbols-outlined text-white text-[120px]">casino</span>
+          </div>
+          <div class="absolute bottom-4 left-4 z-20 text-white">
+            <span class="material-symbols-outlined block mb-1">casino</span>
+            <span class="font-label-md text-label-md">Ajedrez</span>
+          </div>
+        </div>
+
+        <div class="group relative h-52 rounded-xl overflow-hidden cursor-pointer bg-secondary">
+          <div class="absolute inset-0 bg-secondary/50 group-hover:bg-secondary/30 transition-all z-10"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-20">
+            <span class="material-symbols-outlined text-white text-[120px]">sports_soccer</span>
+          </div>
+          <div class="absolute bottom-4 left-4 z-20 text-white">
+            <span class="material-symbols-outlined block mb-1">sports_soccer</span>
+            <span class="font-label-md text-label-md">Fútbol</span>
+          </div>
+        </div>
+
+        <div class="group relative h-52 rounded-xl overflow-hidden cursor-pointer bg-tertiary-container">
+          <div class="absolute inset-0 bg-tertiary/50 group-hover:bg-tertiary/30 transition-all z-10"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-20">
+            <span class="material-symbols-outlined text-white text-[120px]">sports_tennis</span>
+          </div>
+          <div class="absolute bottom-4 left-4 z-20 text-white">
+            <span class="material-symbols-outlined block mb-1">sports_tennis</span>
+            <span class="font-label-md text-label-md">Tenis</span>
+          </div>
+        </div>
+
+        <div class="group relative h-52 rounded-xl overflow-hidden cursor-pointer bg-surface-container-highest">
+          <div class="absolute inset-0 bg-on-surface/40 group-hover:bg-on-surface/20 transition-all z-10"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-20">
+            <span class="material-symbols-outlined text-white text-[120px]">self_improvement</span>
+          </div>
+          <div class="absolute bottom-4 left-4 z-20 text-white">
+            <span class="material-symbols-outlined block mb-1">self_improvement</span>
+            <span class="font-label-md text-label-md">Karate</span>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="mt-10 text-center font-body-md text-on-surface-variant italic">
+        Certificación <strong>Neo+</strong> disponible para adquisición natural del inglés — plataforma visual, auditiva y verbal.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── ADMISIONES CTA ── -->
+  <section id="admisiones" class="py-24 bg-primary text-on-primary">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-margin-desktop">
+      <div class="flex flex-col lg:flex-row gap-16 items-start">
+
+        <!-- Left copy -->
+        <div class="lg:w-1/2">
+          <h2 class="font-headline-lg text-headline-lg mb-6">Formación Integral e Incluyente</h2>
+          <p class="font-body-lg text-body-lg mb-10 opacity-90 leading-relaxed">
+            Con más de 30 años de trayectoria, ofrecemos una formación académica sólida y personalizada en
+            El Cangrejo. Únase a nuestra comunidad educativa comprometida con la excelencia y el respeto.
+          </p>
+
+          <div class="space-y-5 mb-10">
+            <div class="flex gap-3 items-start">
+              <span class="material-symbols-outlined text-secondary-container shrink-0 mt-0.5">school</span>
+              <p class="font-body-md text-body-md opacity-90">Grupos reducidos con acompañamiento académico individualizado.</p>
+            </div>
+            <div class="flex gap-3 items-start">
+              <span class="material-symbols-outlined text-secondary-container shrink-0 mt-0.5">public</span>
+              <p class="font-body-md text-body-md opacity-90">Comunidad internacional en El Cangrejo, abierta a familias de todo el mundo.</p>
+            </div>
+            <div class="flex gap-3 items-start">
+              <span class="material-symbols-outlined text-secondary-container shrink-0 mt-0.5">grade</span>
+              <p class="font-body-md text-body-md opacity-90">Pensamiento crítico, valores éticos y excelencia académica como pilares.</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-6">
+            <img src="/assets/logo.png" alt="Lincoln Academy" class="h-10 brightness-0 invert opacity-80"/>
+            <div class="h-10 w-px bg-white/20"></div>
+            <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed">Est. 1994</span>
+          </div>
+        </div>
+
+        <!-- Admissions form -->
+        <div class="lg:w-1/2 glass-card p-8 md:p-10 rounded-2xl text-on-surface shadow-2xl w-full">
+          <h3 class="font-headline-md text-headline-md mb-2 text-primary">Inicie su Proceso</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant mb-8">Solicite una cita con nuestro equipo de admisiones.</p>
+
+          <form id="admisionesForm" class="space-y-4" novalidate>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="space-y-1">
+                <label class="font-label-sm text-label-sm text-on-surface-variant" for="nombre">Nombre <span class="text-error">*</span></label>
+                <input id="nombre" name="nombre" type="text" placeholder="Tu nombre"
+                  class="w-full bg-white border border-surface-border rounded-lg p-3 text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-all" required/>
+              </div>
+              <div class="space-y-1">
+                <label class="font-label-sm text-label-sm text-on-surface-variant" for="apellidos">Apellidos</label>
+                <input id="apellidos" name="apellidos" type="text" placeholder="Tus apellidos"
+                  class="w-full bg-white border border-surface-border rounded-lg p-3 text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-all"/>
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <label class="font-label-sm text-label-sm text-on-surface-variant" for="email">Correo Electrónico <span class="text-error">*</span></label>
+              <input id="email" name="email" type="email" placeholder="email@ejemplo.com"
+                class="w-full bg-white border border-surface-border rounded-lg p-3 text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-all" required/>
+            </div>
+
+            <div class="space-y-1">
+              <label class="font-label-sm text-label-sm text-on-surface-variant" for="grado">Grado / Año <span class="text-error">*</span></label>
+              <select id="grado" name="grado"
+                class="w-full bg-white border border-surface-border rounded-lg p-3 text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-all" required>
+                <option value="">Seleccione el Año</option>
+                <option>Primero</option>
+                <option>Segundo</option>
+                <option>Tercero</option>
+                <option>Cuarto</option>
+                <option>Quinto</option>
+                <option>Sexto</option>
+                <option>Séptimo</option>
+                <option>Octavo</option>
+                <option>Noveno</option>
+                <option>Décimo</option>
+                <option>Décimo primero</option>
+                <option>Décimo segundo</option>
+              </select>
+            </div>
+
+            <div class="space-y-1">
+              <label class="font-label-sm text-label-sm text-on-surface-variant" for="detalles">Detalles adicionales</label>
+              <textarea id="detalles" name="detalles" rows="3" placeholder="Cuéntenos sobre su hijo/a o cualquier pregunta…"
+                class="w-full bg-white border border-surface-border rounded-lg p-3 text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-all resize-none"></textarea>
+            </div>
+
+            <button type="submit" id="submitBtn"
+              class="w-full bg-secondary text-on-secondary py-4 rounded-lg font-label-md text-label-md hover:brightness-110 active:scale-95 transition-all shadow-md flex items-center justify-center gap-2">
+              <span id="submitText">Enviar Solicitud</span>
+              <span id="submitSpinner" class="material-symbols-outlined text-lg hidden animate-spin">progress_activity</span>
+            </button>
+          </form>
+
+          <div class="mt-6 flex items-center justify-center gap-4">
+            <span class="h-px flex-grow bg-surface-border"></span>
+            <span class="font-label-sm text-label-sm text-on-surface-variant shrink-0">O contáctenos vía</span>
+            <span class="h-px flex-grow bg-surface-border"></span>
+          </div>
+
+          <a href="https://wa.me/50760000000" target="_blank" rel="noopener"
+            class="mt-4 flex items-center justify-center gap-2 w-full bg-whatsapp-green text-white py-3 rounded-lg font-label-md text-label-md hover:brightness-105 transition-all shadow-sm">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+            Escríbanos por WhatsApp
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer class="bg-surface-container border-t border-surface-border">
+  <div class="flex flex-col md:flex-row justify-between items-start gap-10 w-full px-6 md:px-margin-desktop py-14 max-w-[1200px] mx-auto">
+    <div class="max-w-xs">
+      <img src="/assets/logo.png" alt="The Lincoln Academy" class="h-10 mb-5 opacity-90"/>
+      <p class="font-body-md text-body-md text-on-surface-variant">
+        Excelencia en educación trilingüe desde hace más de 30 años en El Cangrejo, Panamá.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-10">
+      <div class="flex flex-col gap-3">
+        <span class="font-label-md text-label-md text-primary font-bold">Academia</span>
+        <a href="#inicio"       class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors">Inicio</a>
+        <a href="#nosotros"     class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors">Sobre Nosotros</a>
+        <a href="#actividades"  class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors">Actividades</a>
+      </div>
+      <div class="flex flex-col gap-3">
+        <span class="font-label-md text-label-md text-primary font-bold">Admisiones</span>
+        <a href="#admisiones" class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors">Proceso</a>
+        <a href="#admisiones" class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors">Formulario</a>
+        <a href="https://wa.me/50760000000" target="_blank" rel="noopener"
+           class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors">WhatsApp</a>
+      </div>
+      <div class="flex flex-col gap-3">
+        <span class="font-label-md text-label-md text-primary font-bold">Legal</span>
+        <a href="#" class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors">Privacidad</a>
+        <a href="#" class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors">Términos</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-surface-container-high border-t border-surface-border py-5 px-6 md:px-margin-desktop">
+    <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-3">
+      <p class="font-label-sm text-label-sm text-on-surface-variant">© 2026 The Lincoln Academy. Excellence in Trilingual Education.</p>
+      <p class="font-label-sm text-label-sm text-on-surface-variant">
+        Designed by <a href="http://www.4psla.com" target="_blank" rel="noopener" class="text-primary hover:underline">4 Points Solutions</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- ── FAB WhatsApp ── -->
+<a href="https://wa.me/50760000000" target="_blank" rel="noopener"
+  class="fixed bottom-8 right-8 w-16 h-16 bg-whatsapp-green text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all z-[100] group"
+  aria-label="Contáctenos por WhatsApp">
+  <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">chat</span>
+  <span class="absolute right-20 bg-white text-on-surface px-4 py-2 rounded-lg text-sm font-semibold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-surface-border">
+    ¿Necesita ayuda? Escríbanos
+  </span>
+</a>
+
+<!-- ── Sidebar Inscripciones ── -->
+<div class="hidden lg:flex fixed left-0 top-1/2 -translate-y-1/2 z-40">
+  <a href="#admisiones"
+    class="bg-secondary text-on-secondary px-4 py-8 rounded-r-xl font-label-md text-label-md [writing-mode:vertical-rl] hover:pl-6 transition-all shadow-xl">
+    Inscripciones abiertas
+  </a>
+</div>
+
+<!-- ── Toast notification ── -->
+<div id="toast" class="hidden fixed bottom-28 right-8 z-[200] bg-on-surface text-inverse-on-surface px-6 py-4 rounded-xl shadow-xl font-label-md text-label-md max-w-xs">
+  <div class="flex items-center gap-3">
+    <span id="toastIcon" class="material-symbols-outlined text-xl shrink-0">check_circle</span>
+    <span id="toastMsg"></span>
+  </div>
+</div>
+
+<script>
+  // ── Header scroll effect ──
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('header');
+    if (window.scrollY > 50) {
+      header.classList.add('shadow-md');
+    } else {
+      header.classList.remove('shadow-md');
+    }
+  });
+
+  // ── Mobile menu ──
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('hidden');
+  });
+  document.querySelectorAll('#mobileMenu a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.add('hidden');
+    });
+  });
+
+  // ── Toast helper ──
+  function showToast(msg, success = true) {
+    const toast = document.getElementById('toast');
+    document.getElementById('toastMsg').textContent = msg;
+    document.getElementById('toastIcon').textContent = success ? 'check_circle' : 'error';
+    toast.classList.remove('hidden');
+    requestAnimationFrame(() => toast.classList.add('show'));
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.classList.add('hidden'), 400);
+    }, 4000);
+  }
+
+  // ── Admissions form ──
+  document.getElementById('admisionesForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const btn = document.getElementById('submitBtn');
+    const submitText = document.getElementById('submitText');
+    const spinner = document.getElementById('submitSpinner');
+
+    btn.disabled = true;
+    submitText.textContent = 'Enviando…';
+    spinner.classList.remove('hidden');
+
+    try {
+      const data = {
+        nombre:    form.nombre.value.trim(),
+        apellidos: form.apellidos.value.trim(),
+        email:     form.email.value.trim(),
+        grado:     form.grado.value,
+        detalles:  form.detalles.value.trim()
+      };
+
+      const res = await fetch('/api/admisiones', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      const json = await res.json();
+
+      if (res.ok && json.success) {
+        showToast('¡Solicitud enviada! Nos comunicaremos pronto.', true);
+        form.reset();
+      } else {
+        showToast(json.error || 'Error al enviar. Intente de nuevo.', false);
+      }
+    } catch {
+      showToast('Error de conexión. Intente de nuevo.', false);
+    } finally {
+      btn.disabled = false;
+      submitText.textContent = 'Enviar Solicitud';
+      spinner.classList.add('hidden');
+    }
+  });
+</script>
+
+</body>
+</html>
